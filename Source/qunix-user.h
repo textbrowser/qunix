@@ -82,6 +82,26 @@ class qunix_user: public QObject
 
     return list;
   }
+
+  static gid_t getegid(void)
+  {
+    return ::getegid();
+  }
+
+  static gid_t getgid(void)
+  {
+    return ::getgid();
+  }
+
+  static uid_t geteuid(void)
+  {
+    return ::geteuid();
+  }
+
+  static uid_t getuid(void)
+  {
+    return ::getuid();
+  }
 };
 
 #endif
