@@ -32,7 +32,7 @@
 
 extern "C"
 {
-  #include <unistd.h>
+#include <unistd.h>
 }
 
 class qunix_user: public QObject
@@ -52,35 +52,35 @@ class qunix_user: public QObject
   {
     QScopedArrayPointer<char> array(new(std::nothrow) char[LOGIN_NAME_MAX]);
 
-    if(getlogin_r(array.data(), LOGIN_NAME_MAX) == 0)
+    if(::getlogin_r(array.data(), LOGIN_NAME_MAX) == 0)
       return array.data();
     else
       return QByteArray();
   }
 
-  static QList<gid_t> getgroups(void)
+  static QVector<gid_t> getgroups(void)
   {
     auto size = ::getgroups(0, nullptr);
 
     if(size == -1)
-      return QList<gid_t> ();
+      return QVector<gid_t> ();
 
     QScopedArrayPointer<gid_t> array(new(std::nothrow) gid_t[size]);
 
     if(!array)
-      return QList<gid_t> ();
+      return QVector<gid_t> ();
 
     size = ::getgroups(size, array.data());
 
     if(size == -1)
-      return QList<gid_t> ();
+      return QVector<gid_t> ();
 
-    QList<gid_t> list(size);
+    QVector<gid_t> vector(size);
 
     for(auto i = size - 1; i >= 0; i--)
-      list[i] = array[i];
+      vector[i] = array[i];
 
-    return list;
+    return vector;
   }
 
   static gid_t getegid(void)
