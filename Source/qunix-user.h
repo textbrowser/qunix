@@ -48,7 +48,7 @@ class qunix_user: public QObject
   {
   }
 
-  static QByteArray getlogin(void)
+  static QByteArray getlogin_r(void)
   {
     QScopedArrayPointer<char> array(new(std::nothrow) char[LOGIN_NAME_MAX]);
 
