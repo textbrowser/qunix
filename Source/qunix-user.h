@@ -110,6 +110,36 @@ class qunix_user: public QObject
     return vector;
   }
 
+  static bool setegid(const gid_t egid)
+  {
+    return ::setegid(egid) != -1;
+  }
+
+  static bool seteuid(const uid_t euid)
+  {
+    return ::seteuid(euid) != -1;
+  }
+
+  static bool setgid(const gid_t gid)
+  {
+    return ::seteuid(gid) != -1;
+  }
+
+  static bool setregid(const gid_t rgid, const gid_t egid)
+  {
+    return ::setregid(rgid, egid) != -1;
+  }
+
+  static bool setreuid(const uid_t ruid, const uid_t euid)
+  {
+    return ::setreuid(ruid, euid) != -1;
+  }
+
+  static bool setuid(const uid_t uid)
+  {
+    return ::setuid(uid) != -1;
+  }
+
   static gid_t getegid(void)
   {
     return ::getegid();
