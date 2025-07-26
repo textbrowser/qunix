@@ -32,6 +32,7 @@
 
 extern "C"
 {
+#include <grp.h>
 #include <unistd.h>
 }
 
@@ -56,6 +57,32 @@ class qunix_user: public QObject
       return array.data();
     else
       return QByteArray();
+  }
+
+  static QVector<QByteArray> getgroups_names(void)
+  {
+    auto const size = sysconf(_SC_GETGR_R_SIZE_MAX);
+
+    if(size <= 0)
+      return QVector<QByteArray> ();
+
+    QVector<QByteArray> vector;
+
+    foreach(auto const &i, getgroups())
+      {
+	QByteArray buffer(size, '0');
+	struct group *result;
+	struct group group = {};
+
+	if(::getgrgid_r(i,
+			&group,
+			buffer.data(),
+			buffer.length(),
+			&result) == 0)
+	  vector << group.gr_name;
+      }
+
+    return vector;
   }
 
   static QVector<gid_t> getgroups(void)
