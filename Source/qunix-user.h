@@ -122,7 +122,7 @@ class qunix_user: public QObject
 
   static bool setgid(const gid_t gid)
   {
-    return ::seteuid(gid) != -1;
+    return ::setgid(gid) != -1;
   }
 
   static bool setregid(const gid_t rgid, const gid_t egid)
