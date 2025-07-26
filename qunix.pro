@@ -100,7 +100,8 @@ QMAKE_DISTCLEAN += -f .qmake* \
 
 QMAKE_STRIP = echo
 
-HEADERS	    += Source/qunix-user.h
+HEADERS	    += Source/qunix-string.h \
+               Source/qunix-user.h
 INCLUDEPATH += Source
 SOURCES     = qunix.cc
 
