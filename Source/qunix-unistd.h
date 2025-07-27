@@ -51,22 +51,22 @@ class qunix_unistd: public QObject
 
   static QByteArray getlogin_r(void)
   {
-    QScopedArrayPointer<char> buffer(new(std::nothrow) char[LOGIN_NAME_MAX]);
+    QByteArray buffer(LOGIN_NAME_MAX, '\0');
 
-    if(::getlogin_r(buffer.data(), LOGIN_NAME_MAX) == 0)
-      return buffer.data();
-    else
-      return QByteArray();
+    if(::getlogin_r(buffer.data(), buffer.length()) != 0)
+      buffer.clear();
+
+    return buffer.constData();
   }
 
   static QByteArray gethostname(void)
   {
-    QByteArray buffer(HOST_NAME_MAX, '0');
+    QByteArray buffer(HOST_NAME_MAX, '\0');
 
     if(::gethostname(buffer.data(), buffer.length()) != 0)
       buffer.clear();
 
-    return buffer;
+    return buffer.constData();
   }
 
   static QVector<QByteArray> getgroups_names(void)
@@ -80,7 +80,7 @@ class qunix_unistd: public QObject
 
     foreach(auto const &i, getgroups())
       {
-	QByteArray buffer(size, '0');
+	QByteArray buffer(size, '\0');
 	struct group *result;
 	struct group group = {};
 
@@ -133,6 +133,11 @@ class qunix_unistd: public QObject
   static bool setgid(const gid_t gid)
   {
     return ::setgid(gid) != -1;
+  }
+
+  static bool sethostname(const QByteArray &name)
+  {
+    return ::sethostname(name.constData(), name.length()) != -1;
   }
 
   static bool setregid(const gid_t rgid, const gid_t egid)
