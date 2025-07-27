@@ -50,7 +50,7 @@ class qunix_string: public QObject
 
   QByteArray strerror_r(const int errnum)
   {
-    QByteArray array(1024, '0');
+    QByteArray array(1024, '\0');
 
 #if (_POSIX_C_SOURCE >= 200112L) && ! _GNU_SOURCE
     if(::strerror_r(errnum, array.data(), array.length()) != 0)
@@ -60,7 +60,7 @@ class qunix_string: public QObject
       array.clear();
 #endif
 
-    return array;
+    return array.constData();
   }
 };
 
