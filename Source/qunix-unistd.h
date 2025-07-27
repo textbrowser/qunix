@@ -25,8 +25,8 @@
 ** QUNIX, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef _qunix_user_h_
-#define _qunix_user_h_
+#ifndef _qunix_unistd_h_
+#define _qunix_unistd_h_
 
 #include <QCoreApplication>
 
@@ -36,27 +36,37 @@ extern "C"
 #include <unistd.h>
 }
 
-class qunix_user: public QObject
+class qunix_unistd: public QObject
 {
   Q_OBJECT
 
  public:
-  qunix_user(QObject *parent):QObject(parent)
+  qunix_unistd(QObject *parent):QObject(parent)
   {
   }
 
-  ~qunix_user()
+  ~qunix_unistd()
   {
   }
 
   static QByteArray getlogin_r(void)
   {
-    QScopedArrayPointer<char> array(new(std::nothrow) char[LOGIN_NAME_MAX]);
+    QScopedArrayPointer<char> buffer(new(std::nothrow) char[LOGIN_NAME_MAX]);
 
-    if(::getlogin_r(array.data(), LOGIN_NAME_MAX) == 0)
-      return array.data();
+    if(::getlogin_r(buffer.data(), LOGIN_NAME_MAX) == 0)
+      return buffer.data();
     else
       return QByteArray();
+  }
+
+  static QByteArray gethostname(void)
+  {
+    QByteArray buffer(HOST_NAME_MAX, '0');
+
+    if(::gethostname(buffer.data(), buffer.length()) != 0)
+      buffer.clear();
+
+    return buffer;
   }
 
   static QVector<QByteArray> getgroups_names(void)
@@ -92,12 +102,12 @@ class qunix_user: public QObject
     if(size == -1)
       return QVector<gid_t> ();
 
-    QScopedArrayPointer<gid_t> array(new(std::nothrow) gid_t[size]);
+    QScopedArrayPointer<gid_t> buffer(new(std::nothrow) gid_t[size]);
 
-    if(!array)
+    if(!buffer)
       return QVector<gid_t> ();
 
-    size = ::getgroups(size, array.data());
+    size = ::getgroups(size, buffer.data());
 
     if(size == -1)
       return QVector<gid_t> ();
@@ -105,7 +115,7 @@ class qunix_user: public QObject
     QVector<gid_t> vector(size);
 
     for(auto i = size - 1; i >= 0; i--)
-      vector[i] = array[i];
+      vector[i] = buffer[i];
 
     return vector;
   }
