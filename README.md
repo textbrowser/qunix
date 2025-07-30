@@ -7,7 +7,7 @@
 
 <b>Version 2025.07.27</b>
 <ul>
-<li>New host name functions.</li>
+<li>New host-name functions.</li>
 <li>Simpler instructions.</li>
 </ul>
 
