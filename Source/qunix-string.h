@@ -48,7 +48,7 @@ class qunix_string: public QObject
   {
   }
 
-  QByteArray strerror_r(const int errnum)
+  static QByteArray strerror_r(const int errnum)
   {
     QByteArray array(1024, '\0');
 
