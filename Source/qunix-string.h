@@ -50,17 +50,17 @@ class qunix_string: public QObject
 
   static QByteArray strerror_r(const int errnum)
   {
-    QByteArray array(1024, '\0');
+    QByteArray buffer(1024, '\0');
 
 #if (_POSIX_C_SOURCE >= 200112L) && ! _GNU_SOURCE
-    if(::strerror_r(errnum, array.data(), array.length()) != 0)
-      array.clear();
+    if(::strerror_r(errnum, buffer.data(), buffer.length()) != 0)
+      buffer.clear();
 #else
-    if(::strerror_r(errnum, array.data(), array.length()) == nullptr)
-      array.clear();
+    if(::strerror_r(errnum, buffer.data(), buffer.length()) == nullptr)
+      buffer.clear();
 #endif
 
-    return array.constData();
+    return buffer.constData();
   }
 };
 
