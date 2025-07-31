@@ -75,6 +75,7 @@ QMAKE_CXXFLAGS_RELEASE += -Wall \
                           -Wstack-protector \
                           -Wstrict-overflow=5 \
                           -Wstringop-overflow=4 \
+                          -Wtrampolines \
                           -Wzero-as-null-pointer-constant \
                           -Wundef \
                           -fPIE \
