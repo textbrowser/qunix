@@ -29,12 +29,48 @@
 #define _qunix_unistd_h_
 
 #include <QCoreApplication>
+#include <QFile>
+#include <QtDebug>
 
 extern "C"
 {
 #include <grp.h>
 #include <unistd.h>
 }
+
+class qunix_file: public QFile
+{
+  Q_OBJECT
+
+ public:
+  qunix_file(const QString &name, QObject *parent):QFile(name, parent)
+  {
+  }
+
+  qunix_file(void):QFile()
+  {
+  }
+
+  virtual ~qunix_file()
+  {
+  }
+
+  static qunix_file *dup(const int oldfd)
+  {
+    auto const newfd = ::dup(oldfd);
+
+    if(newfd == -1)
+      return nullptr;
+
+    auto file = new qunix_file();
+
+    if(file->open(newfd, QIODevice::ReadWrite, QFileDevice::AutoCloseHandle))
+      return file;
+
+    delete file;
+    return nullptr;
+  }
+};
 
 class qunix_unistd: public QObject
 {
@@ -45,7 +81,11 @@ class qunix_unistd: public QObject
   {
   }
 
-  ~qunix_unistd()
+  qunix_unistd(void):QObject()
+  {
+  }
+
+  virtual ~qunix_unistd()
   {
   }
 
