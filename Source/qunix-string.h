@@ -29,6 +29,7 @@
 #define _qunix_string_h_
 
 #include <QCoreApplication>
+#include <QtDebug>
 
 extern "C"
 {
@@ -52,12 +53,15 @@ class qunix_string: public QObject
   {
     QByteArray buffer(1024, '\0');
 
-#if (_POSIX_C_SOURCE >= 200112L) && ! _GNU_SOURCE
+#if !_GNU_SOURCE && (_POSIX_C_SOURCE >= 200112L)
     if(::strerror_r(errnum, buffer.data(), buffer.length()) != 0)
       buffer.clear();
 #else
-    if(::strerror_r(errnum, buffer.data(), buffer.length()) == nullptr)
-      buffer.clear();
+    auto const temporary = ::strerror_r
+      (errnum, buffer.data(), buffer.length());
+
+    if(temporary)
+      buffer = temporary;
 #endif
 
     return buffer.constData();

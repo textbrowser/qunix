@@ -1,3 +1,4 @@
+#include "qunix-string.h"
 #include "qunix-unistd.h"
 
 int main(void)
@@ -9,6 +10,7 @@ int main(void)
   else
     qDebug() << QObject::tr("Cannot open file.");
 
+  qDebug() << qunix_string::strerror_r(ENOMEM);
   qDebug() << qunix_unistd::getgroups();
   qDebug() << qunix_unistd::getgroups_names();
   qDebug() << qunix_unistd::gethostname();
