@@ -15,5 +15,18 @@ int main(void)
   qDebug() << qunix_unistd::getgroups_names();
   qDebug() << qunix_unistd::gethostname();
   qDebug() << qunix_unistd::getlogin_r();
+
+  QByteArray a(10, '\0');
+
+  a[0] = 0x00;
+  a[1] = 0x01;
+  a[2] = 0x02;
+  a[3] = 0x03;
+  a[4] = 0x04;
+
+  QByteArray b(a.size(), '\0');
+
+  qunix_unistd::swab(a, b, 10);
+  qDebug() << b;
   return EXIT_SUCCESS;
 }

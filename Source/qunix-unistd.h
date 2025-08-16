@@ -89,21 +89,21 @@ class qunix_unistd: public QObject
   {
   }
 
-  static QByteArray getlogin_r(void)
-  {
-    QByteArray buffer(LOGIN_NAME_MAX, '\0');
-
-    if(::getlogin_r(buffer.data(), buffer.length()) != 0)
-      buffer.clear();
-
-    return buffer.constData();
-  }
-
   static QByteArray gethostname(void)
   {
     QByteArray buffer(HOST_NAME_MAX, '\0');
 
     if(::gethostname(buffer.data(), buffer.length()) != 0)
+      buffer.clear();
+
+    return buffer.constData();
+  }
+
+  static QByteArray getlogin_r(void)
+  {
+    QByteArray buffer(LOGIN_NAME_MAX, '\0');
+
+    if(::getlogin_r(buffer.data(), buffer.length()) != 0)
       buffer.clear();
 
     return buffer.constData();
@@ -228,6 +228,11 @@ class qunix_unistd: public QObject
   static uid_t getuid(void)
   {
     return ::getuid();
+  }
+
+  static void swab(const QByteArray &src, QByteArray &dst, const ssize_t n)
+  {
+    ::swab(src.data(), dst.data(), n);
   }
 };
 
