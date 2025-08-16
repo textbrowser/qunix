@@ -215,6 +215,11 @@ class qunix_unistd: public QObject
     return ::gethostid();
   }
 
+  static long sysconf(const int name)
+  {
+    return ::sysconf(name);
+  }
+
   static uid_t geteuid(void)
   {
     return ::geteuid();
