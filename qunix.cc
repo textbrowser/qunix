@@ -3,7 +3,7 @@
 
 int main(void)
 {
-  QScopedPointer<qunix_file> file(qunix_file::dup(0));
+  auto file(qunix_file::dup(0));
 
   if(file && file->isOpen())
     qDebug() << QObject::tr("File (%1) is open.").arg(file->handle());

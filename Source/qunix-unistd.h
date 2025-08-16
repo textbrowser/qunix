@@ -55,19 +55,19 @@ class qunix_file: public QFile
   {
   }
 
-  static qunix_file *dup(const int oldfd)
+  static QSharedPointer<qunix_file> dup(const int oldfd)
   {
     auto const newfd = ::dup(oldfd);
 
     if(newfd == -1)
       return nullptr;
 
-    auto file = new qunix_file();
+    QSharedPointer<qunix_file> file(new qunix_file());
 
     if(file->open(newfd, QIODevice::ReadWrite, QFileDevice::AutoCloseHandle))
       return file;
 
-    delete file;
+    file.clear();
     return nullptr;
   }
 };
