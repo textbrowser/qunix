@@ -5,6 +5,15 @@
 <li>POSIX.</li>
 </ul>
 
+<b>Version 2025.08.16</b>
+<ul>
+<li>New dup() function.</li>
+<li>New qunix_file class.</li>
+<li>New sethostid() function.</li>
+<li>New swab() function.</li>
+<li>New sysconf() function.</li>
+</ul>
+
 <b>Version 2025.07.27</b>
 <ul>
 <li>New host-name functions.</li>
