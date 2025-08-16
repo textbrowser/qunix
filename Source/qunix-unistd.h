@@ -175,6 +175,11 @@ class qunix_unistd: public QObject
     return ::setgid(gid) != -1;
   }
 
+  static bool sethostid(const long hostid)
+  {
+    return ::sethostid(hostid) != -1;
+  }
+
   static bool sethostname(const QByteArray &name)
   {
     return ::sethostname(name.constData(), name.length()) != -1;
@@ -203,6 +208,11 @@ class qunix_unistd: public QObject
   static gid_t getgid(void)
   {
     return ::getgid();
+  }
+
+  static long gethostid(void)
+  {
+    return ::gethostid();
   }
 
   static uid_t geteuid(void)
