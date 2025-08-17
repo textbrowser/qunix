@@ -200,6 +200,17 @@ class qunix_unistd: public QObject
     return ::setuid(uid) != -1;
   }
 
+  static bool swab(const QByteArray &src, QByteArray &dst, const ssize_t n)
+  {
+    if(dst.length() < n ||
+       n <= 0 ||
+       n > src.length())
+      return false;
+
+    ::swab(src.data(), dst.data(), n);
+    return true;
+  }
+
   static gid_t getegid(void)
   {
     return ::getegid();
@@ -228,11 +239,6 @@ class qunix_unistd: public QObject
   static uid_t getuid(void)
   {
     return ::getuid();
-  }
-
-  static void swab(const QByteArray &src, QByteArray &dst, const ssize_t n)
-  {
-    ::swab(src.data(), dst.data(), n);
   }
 };
 

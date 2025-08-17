@@ -45,7 +45,7 @@ class qunix_string: public QObject
   {
   }
 
-  ~qunix_string()
+  virtual ~qunix_string()
   {
   }
 
@@ -62,6 +62,8 @@ class qunix_string: public QObject
 
     if(temporary)
       buffer = temporary;
+    else
+      buffer.clear();
 #endif
 
     return buffer.constData();

@@ -24,9 +24,9 @@ int main(void)
   a[3] = 0x03;
   a[4] = 0x04;
 
-  QByteArray b(a.size(), '\0');
+  QByteArray b(5, '\0');
 
-  qunix_unistd::swab(a, b, 10);
+  qDebug() << qunix_unistd::swab(a, b, 5);
   qDebug() << b;
   return EXIT_SUCCESS;
 }

@@ -5,6 +5,11 @@
 <li>POSIX.</li>
 </ul>
 
+<b>Version 2025.08.17</b>
+<ul>
+<li>Inspect parameter sizes in swab().</li>
+</ul>
+
 <b>Version 2025.08.16</b>
 <ul>
 <li>New dup() function.</li>
