@@ -70,6 +70,22 @@ class qunix_file: public QFile
     file.clear();
     return nullptr;
   }
+
+  static QSharedPointer<qunix_file> dup2(const int oldfd, const int newfd)
+  {
+    auto const fd = ::dup2(oldfd, newfd);
+
+    if(fd == -1)
+      return nullptr;
+
+    QSharedPointer<qunix_file> file(new qunix_file());
+
+    if(file->open(fd, QIODevice::ReadWrite, QFileDevice::AutoCloseHandle))
+      return file;
+
+    file.clear();
+    return nullptr;
+  }
 };
 
 class qunix_unistd: public QObject
