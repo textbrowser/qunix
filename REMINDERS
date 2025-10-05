@@ -1,5 +1,25 @@
 Completed Items
 
+- The file unistd.h.
+  getegid()
+  geteuid()
+  getgroups()
+  gethostid()
+  gethostname()
+  getlogin_r()
+  getuid()
+  setegid()
+  seteuid()
+  setgid()
+  setregid()
+  setreuid()
+  setuid()
+  swab()
+  sysconf()
+
 Remaining Items
 
 - The file unistd.h.
+  crypt()
+  encrypt()
+  getopt()

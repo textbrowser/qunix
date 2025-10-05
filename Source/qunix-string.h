@@ -57,8 +57,7 @@ class qunix_string: public QObject
     if(::strerror_r(errnum, buffer.data(), buffer.length()) != 0)
       buffer.clear();
 #else
-    auto const temporary = ::strerror_r
-      (errnum, buffer.data(), buffer.length());
+    auto const temporary = ::strerror_r(errnum, buffer.data(), buffer.length());
 
     if(temporary)
       buffer = temporary;
