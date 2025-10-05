@@ -1,13 +1,17 @@
 Completed Items
 
 - The file unistd.h.
+  alarm()
+  encrypt() // Deprecated.
   getegid()
   geteuid()
   getgroups()
   gethostid()
   gethostname()
   getlogin_r()
+  getopt() // See QCommandLineParser.
   getuid()
+  pause()
   setegid()
   seteuid()
   setgid()
@@ -21,5 +25,3 @@ Remaining Items
 
 - The file unistd.h.
   crypt()
-  encrypt()
-  getopt()

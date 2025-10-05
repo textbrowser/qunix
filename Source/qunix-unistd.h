@@ -221,6 +221,11 @@ class qunix_unistd: public QObject
     return ::getgid();
   }
 
+  static int pause(void)
+  {
+    return ::pause();
+  }
+
   static long gethostid(void)
   {
     return ::gethostid();
@@ -239,6 +244,11 @@ class qunix_unistd: public QObject
   static uid_t getuid(void)
   {
     return ::getuid();
+  }
+
+  static unsigned int alarm(const unsigned int seconds)
+  {
+    return ::alarm(seconds);
   }
 };
 
