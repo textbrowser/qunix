@@ -237,6 +237,11 @@ class qunix_unistd: public QObject
     return ::getgid();
   }
 
+  static int close(const int fd)
+  {
+    return ::close(fd);
+  }
+
   static int pause(void)
   {
     return ::pause();

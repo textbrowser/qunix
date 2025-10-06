@@ -2,6 +2,7 @@ Completed Items
 
 - The file unistd.h.
   alarm()
+  close()
   crypt() // QCryptographicHash
   dup()
   dup2()
