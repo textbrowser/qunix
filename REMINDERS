@@ -2,6 +2,7 @@ Completed Items
 
 - The file unistd.h.
   alarm()
+  crypt() // QCryptographicHash
   dup()
   dup2()
   encrypt() // Deprecated.
@@ -26,4 +27,3 @@ Completed Items
 Remaining Items
 
 - The file unistd.h.
-  crypt()
