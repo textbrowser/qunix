@@ -3,10 +3,10 @@ Completed Items
 - The file unistd.h.
   alarm()
   close()
-  crypt() // QCryptographicHash
+  crypt() // See QCryptographicHash.
   dup()
   dup2()
-  encrypt() // Deprecated.
+  encrypt() // Deprecated!
   getegid()
   geteuid()
   getgroups()
