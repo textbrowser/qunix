@@ -6,11 +6,11 @@ int main(void)
   auto file(qunix_file::dup(0));
 
   if(file && file->isOpen())
-    qDebug() << QObject::tr("File (%1) is open.").arg(file->handle());
+    qDebug() << QObject::tr("File (%1) is now open.").arg(file->handle());
   else
     qDebug() << QObject::tr("Cannot open file.");
 
-  qDebug() << qunix_string::strerror_r(ENOMEM);
+  qDebug() << "ENOMEM:" << qunix_string::strerror_r(ENOMEM);
   qDebug() << qunix_unistd::getgroups();
   qDebug() << qunix_unistd::getgroups_names();
   qDebug() << qunix_unistd::gethostname();
@@ -26,7 +26,7 @@ int main(void)
 
   QByteArray b(5, '\0');
 
-  qDebug() << qunix_unistd::swab(a, b, 5);
+  qDebug() << "swab:" << qunix_unistd::swab(a, b, 5);
   qDebug() << b;
   return EXIT_SUCCESS;
 }

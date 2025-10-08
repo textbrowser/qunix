@@ -158,10 +158,7 @@ class qunix_unistd: public QObject
     if(size == -1)
       return QVector<gid_t> ();
 
-    QScopedArrayPointer<gid_t> buffer(new(std::nothrow) gid_t[size]);
-
-    if(!buffer)
-      return QVector<gid_t> ();
+    QScopedArrayPointer<gid_t> buffer(new gid_t[size]);
 
     size = ::getgroups(size, buffer.data());
 
