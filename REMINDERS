@@ -1,12 +1,15 @@
 Completed Items
 
 - The file unistd.h.
+  access() // See QFileInfo.
   alarm()
+  chdir()
   close()
   crypt() // See QCryptographicHash.
   dup()
   dup2()
   encrypt() // Deprecated!
+  fchdir()
   getegid()
   geteuid()
   getgroups()

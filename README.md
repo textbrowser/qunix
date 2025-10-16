@@ -5,6 +5,12 @@
 <li>POSIX.</li>
 </ul>
 
+<b>Version 2025.00.00</b>
+<ul>
+<li>New functions: chdir(), fchdir().</li>
+<li>Return a boolean for close().</li>
+</ul>
+
 <b>Version 2025.10.07</b>
 <ul>
 <li>New functions: alarm(), close(), dup2(), pause().</li>

@@ -11,6 +11,7 @@ int main(void)
     qDebug() << QObject::tr("Cannot open file.");
 
   qDebug() << "ENOMEM:" << qunix_string::strerror_r(ENOMEM);
+  qDebug() << qunix_unistd::chdir(nullptr);
   qDebug() << qunix_unistd::getgroups();
   qDebug() << qunix_unistd::getgroups_names();
   qDebug() << qunix_unistd::gethostname();

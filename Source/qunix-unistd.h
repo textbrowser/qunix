@@ -173,6 +173,21 @@ class qunix_unistd: public QObject
     return vector;
   }
 
+  static bool chdir(const char *path)
+  {
+    return ::chdir(path) != -1;
+  }
+
+  static bool close(const int fd)
+  {
+    return ::close(fd) != -1;
+  }
+
+  static bool fchdir(const int fd)
+  {
+    return ::fchdir(fd) != -1;
+  }
+
   static bool setegid(const gid_t egid)
   {
     return ::setegid(egid) != -1;
@@ -232,11 +247,6 @@ class qunix_unistd: public QObject
   static gid_t getgid(void)
   {
     return ::getgid();
-  }
-
-  static int close(const int fd)
-  {
-    return ::close(fd);
   }
 
   static int pause(void)
