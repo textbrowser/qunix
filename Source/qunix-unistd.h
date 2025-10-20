@@ -175,7 +175,10 @@ class qunix_unistd: public QObject
 
   static bool chdir(const char *path)
   {
-    return ::chdir(path) != -1;
+    if(path)
+      return ::chdir(path) != -1;
+    else
+      return false;
   }
 
   static bool close(const int fd)
