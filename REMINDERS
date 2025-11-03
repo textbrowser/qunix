@@ -4,12 +4,15 @@ Completed Items
   access() // See QFileInfo.
   alarm()
   chdir()
+  chown()
   close()
   crypt() // See QCryptographicHash.
   dup()
   dup2()
   encrypt() // Deprecated!
   fchdir()
+  fchown()
+  fchownat()
   getegid()
   geteuid()
   getgroups()
@@ -18,6 +21,7 @@ Completed Items
   getlogin_r()
   getopt() // See QCommandLineParser.
   getuid()
+  lchown()
   pause()
   setegid()
   seteuid()
@@ -31,3 +35,5 @@ Completed Items
 Remaining Items
 
 - The file unistd.h.
+  faccessat()
+  faccessat2()

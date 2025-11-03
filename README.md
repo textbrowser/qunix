@@ -7,7 +7,12 @@
 
 <b>Version 2025.00.00</b>
 <ul>
-<li>New functions: chdir(), fchdir().</li>
+<li>New functions: chdir(),
+	chown(),
+	fchdir(),
+	fchown(),
+	fchownat(),
+	lchown().</li>
 <li>Return a boolean for close().</li>
 </ul>
 

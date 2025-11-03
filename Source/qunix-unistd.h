@@ -181,6 +181,14 @@ class qunix_unistd: public QObject
       return false;
   }
 
+  static bool chown(const char *path, const uid_t owner, const gid_t group)
+  {
+    if(path)
+      return ::chown(path, owner, group) != -1;
+    else
+      return false;
+  }
+
   static bool close(const int fd)
   {
     return ::close(fd) != -1;
@@ -189,6 +197,31 @@ class qunix_unistd: public QObject
   static bool fchdir(const int fd)
   {
     return ::fchdir(fd) != -1;
+  }
+
+  static bool fchown(const int fd, const uid_t owner, const gid_t group)
+  {
+    return ::fchown(fd, owner, group) != -1;
+  }
+
+  static bool fchownat(const int dirfd,
+		       const char *path,
+		       const uid_t owner,
+		       const gid_t group,
+		       const int flags)
+  {
+    if(path)
+      return ::fchownat(dirfd, path, owner, group, flags) != -1;
+    else
+      return false;
+  }
+
+  static bool lchown(const char *path, const uid_t owner, const gid_t group)
+  {
+    if(path)
+      return ::lchown(path, owner, group) != -1;
+    else
+      return false;
   }
 
   static bool setegid(const gid_t egid)
