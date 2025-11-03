@@ -5,13 +5,15 @@
 <li>POSIX.</li>
 </ul>
 
-<b>Version 2025.00.00</b>
+<b>Version 2025.11.03</b>
 <ul>
 <li>New functions: chdir(),
 	chown(),
 	fchdir(),
 	fchown(),
 	fchownat(),
+	fdatasync(),
+	fsync(),
 	lchown().</li>
 <li>Return a boolean for close().</li>
 </ul>

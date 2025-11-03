@@ -28,7 +28,7 @@
 #ifndef _qunix_version_h_
 #define _qunix_version_h_
 
-#define QUNIX_VERSION "2025.10.07"
-#define QUNIX_VERSION_LTS "2025.10.07"
+#define QUNIX_VERSION "2025.11.03"
+#define QUNIX_VERSION_LTS "2025.11.03"
 
 #endif

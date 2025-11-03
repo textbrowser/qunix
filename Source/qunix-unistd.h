@@ -216,6 +216,16 @@ class qunix_unistd: public QObject
       return false;
   }
 
+  static bool fdatasync(const int fd)
+  {
+    return ::fdatasync(fd) != -1;
+  }
+
+  static bool fsync(const int fd)
+  {
+    return ::fsync(fd) != -1;
+  }
+
   static bool lchown(const char *path, const uid_t owner, const gid_t group)
   {
     if(path)

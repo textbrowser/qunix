@@ -13,6 +13,8 @@ Completed Items
   fchdir()
   fchown()
   fchownat()
+  fdatasync()
+  fsync()
   getegid()
   geteuid()
   getgroups()
