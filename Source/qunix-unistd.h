@@ -34,6 +34,7 @@
 
 extern "C"
 {
+#include <fcntl.h>
 #include <grp.h>
 #include <unistd.h>
 }
@@ -93,6 +94,12 @@ class qunix_unistd: public QObject
   Q_OBJECT
 
  public:
+  enum class FCHOWNAT_FLAGS : int
+  {
+    AtEmptyPath = AT_EMPTY_PATH,
+    AtSymlinkNoFollow = AT_SYMLINK_NOFOLLOW
+  };
+
   qunix_unistd(QObject *parent):QObject(parent)
   {
   }
@@ -208,7 +215,7 @@ class qunix_unistd: public QObject
 		       const char *path,
 		       const uid_t owner,
 		       const gid_t group,
-		       const int flags)
+		       const FCHOWNAT_FLAGS flags)
   {
     /*
     ** Flags is a bitwise-or of 0 or more of
@@ -216,7 +223,8 @@ class qunix_unistd: public QObject
     */
 
     if(path)
-      return ::fchownat(dirfd, path, owner, group, flags) != -1;
+      return ::fchownat
+	(dirfd, path, owner, group, static_cast<int> (flags)) != -1;
     else
       return false;
   }
@@ -330,5 +338,12 @@ class qunix_unistd: public QObject
     return ::alarm(seconds);
   }
 };
+
+inline qunix_unistd::FCHOWNAT_FLAGS operator |
+(qunix_unistd::FCHOWNAT_FLAGS a, qunix_unistd::FCHOWNAT_FLAGS b)
+{
+  return qunix_unistd::FCHOWNAT_FLAGS
+    (static_cast<int> (a) | static_cast<int> (b));
+}
 
 #endif
