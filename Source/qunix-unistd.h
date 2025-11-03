@@ -210,6 +210,11 @@ class qunix_unistd: public QObject
 		       const gid_t group,
 		       const int flags)
   {
+    /*
+    ** Flags is a bitwise-or of 0 or more of
+    ** AT_EMPTY_PATH, AT_SYMLINK_NOFOLLOW.
+    */
+
     if(path)
       return ::fchownat(dirfd, path, owner, group, flags) != -1;
     else
