@@ -10,6 +10,7 @@ Completed Items
   dup()
   dup2()
   encrypt() // Deprecated!
+  faccessat()
   fchdir()
   fchown()
   fchownat()
@@ -42,7 +43,6 @@ Completed Items
 Remaining Items
 
 - The file unistd.h.
-  faccessat()
   faccessat2()
   fpathconf()
   pathconf()

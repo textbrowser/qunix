@@ -7,7 +7,8 @@
 
 <b>Version 2025.12.25</b>
 <ul>
-<li>New functions: ftruncate().</li>
+<li>New functions: faccessat(), ftruncate().</li>
+<li>The function pause() now returns a boolean.</li>
 </ul>
 
 <b>Version 2025.11.03</b>

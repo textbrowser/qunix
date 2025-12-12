@@ -201,6 +201,15 @@ class qunix_unistd: public QObject
     return ::close(fd) != -1;
   }
 
+  static bool faccessat
+    (const int dirfd, const char *pathname, const int mode, const int flags)
+  {
+    if(pathname)
+      return ::faccessat(dirfd, pathname, mode, flags) != -1;
+    else
+      return false;
+  }
+
   static bool fchdir(const int fd)
   {
     return ::fchdir(fd) != -1;
@@ -239,12 +248,22 @@ class qunix_unistd: public QObject
     return ::fsync(fd) != -1;
   }
 
+  static bool ftruncate(const int fd, const off_t length)
+  {
+    return ::ftruncate(fd, length) != -1;
+  }
+
   static bool lchown(const char *path, const uid_t owner, const gid_t group)
   {
     if(path)
       return ::lchown(path, owner, group) != -1;
     else
       return false;
+  }
+
+  static bool pause(void)
+  {
+    return ::pause() != -1;
   }
 
   static bool setegid(const gid_t egid)
@@ -306,16 +325,6 @@ class qunix_unistd: public QObject
   static gid_t getgid(void)
   {
     return ::getgid();
-  }
-
-  static int ftruncate(const int fd, const off_t length)
-  {
-    return ::ftruncate(fd, length);
-  }
-
-  static int pause(void)
-  {
-    return ::pause();
   }
 
   static long gethostid(void)
