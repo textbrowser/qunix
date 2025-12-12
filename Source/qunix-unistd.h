@@ -308,6 +308,11 @@ class qunix_unistd: public QObject
     return ::getgid();
   }
 
+  static int ftruncate(const int fd, const off_t length)
+  {
+    return ::ftruncate(fd, length);
+  }
+
   static int pause(void)
   {
     return ::pause();

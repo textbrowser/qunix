@@ -15,6 +15,7 @@ Completed Items
   fchownat()
   fdatasync()
   fsync()
+  ftruncate()
   getegid()
   geteuid()
   getgroups()
@@ -33,9 +34,15 @@ Completed Items
   setuid()
   swab()
   sysconf()
+  truncate() // See QFile::resize().
 
 Remaining Items
 
 - The file unistd.h.
   faccessat()
   faccessat2()
+  fpathconf()
+  get_current_dir_name()
+  getcwd()
+  getwd()
+  pathconf()

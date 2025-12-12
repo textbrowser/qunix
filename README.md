@@ -5,6 +5,11 @@
 <li>POSIX.</li>
 </ul>
 
+<b>Version 2025.12.25</b>
+<ul>
+<li>New functions: ftruncate().</li>
+</ul>
+
 <b>Version 2025.11.03</b>
 <ul>
 <li>New functions: chdir(),
