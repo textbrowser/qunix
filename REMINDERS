@@ -16,6 +16,8 @@ Completed Items
   fdatasync()
   fsync()
   ftruncate()
+  get_current_dir_name() // See QDir.
+  getcwd() // See QDir.
   getegid()
   geteuid()
   getgroups()
@@ -24,6 +26,7 @@ Completed Items
   getlogin_r()
   getopt() // See QCommandLineParser.
   getuid()
+  getwd() // See QDir.
   lchown()
   pause()
   setegid()
@@ -42,7 +45,4 @@ Remaining Items
   faccessat()
   faccessat2()
   fpathconf()
-  get_current_dir_name()
-  getcwd()
-  getwd()
   pathconf()
