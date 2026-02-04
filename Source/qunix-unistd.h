@@ -327,9 +327,22 @@ class qunix_unistd: public QObject
     return ::getgid();
   }
 
+  static long fpathconf(const int fd, const int name)
+  {
+    return ::fpathconf(fd, name);
+  }
+
   static long gethostid(void)
   {
     return ::gethostid();
+  }
+
+  static long pathconf(const char *path, const int name)
+  {
+    if(path)
+      return ::pathconf(path, name);
+    else
+      return -1;
   }
 
   static long sysconf(const int name)

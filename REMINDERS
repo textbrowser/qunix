@@ -15,6 +15,7 @@ Completed Items
   fchown()
   fchownat()
   fdatasync()
+  fpathconf()
   fsync()
   ftruncate()
   get_current_dir_name() // See QDir.
@@ -29,6 +30,7 @@ Completed Items
   getuid()
   getwd() // See QDir.
   lchown()
+  pathconf()
   pause()
   setegid()
   seteuid()
@@ -44,5 +46,3 @@ Remaining Items
 
 - The file unistd.h.
   faccessat2()
-  fpathconf()
-  pathconf()
