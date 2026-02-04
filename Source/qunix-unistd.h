@@ -253,6 +253,11 @@ class qunix_unistd: public QObject
     return ::ftruncate(fd, length) != -1;
   }
 
+  static bool isatty(const int fd)
+  {
+    return ::isatty(fd) == 1;
+  }
+
   static bool lchown(const char *path, const uid_t owner, const gid_t group)
   {
     if(path)

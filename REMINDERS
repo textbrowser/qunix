@@ -29,6 +29,7 @@ Completed Items
   getopt() // See QCommandLineParser.
   getuid()
   getwd() // See QDir.
+  isatty()
   lchown()
   pathconf()
   pause()
@@ -46,3 +47,24 @@ Remaining Items
 
 - The file unistd.h.
   faccessat2()
+  link()
+  linkat(
+  lockf()
+  lseek()
+  pipe()
+  pipe2()
+  pread()
+  pwrite()
+  read()
+  readlink()
+  readlinkat()
+  rmdir()
+  symlink()
+  symlinkat()
+  sync()
+  syncfs()
+  ttyname()
+  ttyname_r()
+  unlink()
+  unlinkat()
+  write()
