@@ -5,9 +5,14 @@
 <li>POSIX.</li>
 </ul>
 
-<b>Version 2025.12.25</b>
+<b>Version 2026.03.15</b>
 <ul>
-<li>New functions: faccessat(), ftruncate().</li>
+<li>New functions: faccessat(),
+	fpathconf(),
+	ftruncate(),
+	get_current_dir_name(),
+	isatty(),
+	pathconf().</li>
 <li>The function pause() now returns a boolean.</li>
 </ul>
 
