@@ -10,7 +10,6 @@
 <li>New functions: faccessat(),
 	fpathconf(),
 	ftruncate(),
-	get_current_dir_name(),
 	isatty(),
 	pathconf().</li>
 <li>The function pause() now returns a boolean.</li>
