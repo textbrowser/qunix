@@ -94,6 +94,13 @@ class qunix_unistd: public QObject
   Q_OBJECT
 
  public:
+  enum class FACCESSAT_FLAGS : int
+  {
+    AtEaccess = AT_EACCESS,
+    AtEmptyPath = AT_EMPTY_PATH,
+    AtSymlinkNoFollow = AT_SYMLINK_NOFOLLOW
+  };
+
   enum class FCHOWNAT_FLAGS : int
   {
     AtEmptyPath = AT_EMPTY_PATH,
@@ -201,11 +208,13 @@ class qunix_unistd: public QObject
     return ::close(fd) != -1;
   }
 
-  static bool faccessat
-    (const int dirfd, const char *pathname, const int mode, const int flags)
+  static bool faccessat(const int dirfd,
+			const char *pathname,
+			const int mode,
+			const FACCESSAT_FLAGS flags)
   {
     if(pathname)
-      return ::faccessat(dirfd, pathname, mode, flags) != -1;
+      return ::faccessat(dirfd, pathname, mode, static_cast<int> (flags)) != -1;
     else
       return false;
   }
@@ -386,6 +395,13 @@ class qunix_unistd: public QObject
     return ::alarm(seconds);
   }
 };
+
+inline qunix_unistd::FACCESSAT_FLAGS operator |
+(qunix_unistd::FACCESSAT_FLAGS a, qunix_unistd::FACCESSAT_FLAGS b)
+{
+  return qunix_unistd::FACCESSAT_FLAGS
+    (static_cast<int> (a) | static_cast<int> (b));
+}
 
 inline qunix_unistd::FCHOWNAT_FLAGS operator |
 (qunix_unistd::FCHOWNAT_FLAGS a, qunix_unistd::FCHOWNAT_FLAGS b)
