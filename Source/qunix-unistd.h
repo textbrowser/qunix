@@ -266,6 +266,14 @@ class qunix_unistd: public QObject
       return false;
   }
 
+  static bool link(const char *oldpath, const char *newpath)
+  {
+    if(newpath || oldpath)
+      return ::link(oldpath, newpath) != -1;
+    else
+      return false;
+  }
+
   static bool pause(void)
   {
     return ::pause() != -1;

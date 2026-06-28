@@ -31,6 +31,7 @@ Completed Items
   getwd() // See QDir.
   isatty()
   lchown()
+  link()
   pathconf()
   pause()
   setegid()
@@ -47,7 +48,6 @@ Remaining Items
 
 - The file unistd.h.
   faccessat2()
-  link()
   linkat(
   lockf()
   lseek()
