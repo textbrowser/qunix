@@ -32,6 +32,7 @@ Completed Items
   isatty()
   lchown()
   link()
+  lseek() // See QIODevice.
   pathconf()
   pause()
   setegid()
@@ -43,6 +44,7 @@ Completed Items
   swab()
   sysconf()
   truncate() // See QFile::resize().
+  unlink()
 
 Remaining Items
 
@@ -50,7 +52,6 @@ Remaining Items
   faccessat2()
   linkat(
   lockf()
-  lseek()
   pipe()
   pipe2()
   pread()
@@ -65,6 +66,5 @@ Remaining Items
   syncfs()
   ttyname()
   ttyname_r()
-  unlink()
   unlinkat()
   write()

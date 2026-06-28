@@ -330,6 +330,14 @@ class qunix_unistd: public QObject
     return true;
   }
 
+  static bool unlink(const char *path)
+  {
+    if(path)
+      return ::unlink(path) != -1;
+    else
+      return false;
+  }
+
   static gid_t getegid(void)
   {
     return ::getegid();
