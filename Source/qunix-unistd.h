@@ -214,7 +214,8 @@ class qunix_unistd: public QObject
 			const FACCESSAT_FLAGS flags)
   {
     if(pathname)
-      return ::faccessat(dirfd, pathname, mode, static_cast<int> (flags)) != -1;
+      return ::faccessat
+	(dirfd, pathname, mode, static_cast<int> (flags)) != -1;
     else
       return false;
   }
@@ -235,11 +236,6 @@ class qunix_unistd: public QObject
 		       const gid_t group,
 		       const FCHOWNAT_FLAGS flags)
   {
-    /*
-    ** Flags is a bitwise-or of 0 or more of
-    ** AT_EMPTY_PATH, AT_SYMLINK_NOFOLLOW.
-    */
-
     if(path)
       return ::fchownat
 	(dirfd, path, owner, group, static_cast<int> (flags)) != -1;

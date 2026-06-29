@@ -35,6 +35,7 @@ Completed Items
   lseek() // See QIODevice.
   pathconf()
   pause()
+  read() // See QIODevice.
   setegid()
   seteuid()
   setgid()
@@ -45,6 +46,7 @@ Completed Items
   sysconf()
   truncate() // See QFile::resize().
   unlink()
+  write() // See QIODevice.
 
 Remaining Items
 
@@ -56,7 +58,6 @@ Remaining Items
   pipe2()
   pread()
   pwrite()
-  read()
   readlink()
   readlinkat()
   rmdir()
@@ -67,4 +68,3 @@ Remaining Items
   ttyname()
   ttyname_r()
   unlinkat()
-  write()
