@@ -35,6 +35,8 @@ Completed Items
   lseek() // See QIODevice.
   pathconf()
   pause()
+  pread() // See QIODevice.
+  pwrite() // See QIODevice.
   read() // See QIODevice.
   setegid()
   seteuid()
@@ -56,8 +58,6 @@ Remaining Items
   lockf()
   pipe()
   pipe2()
-  pread()
-  pwrite()
   readlink()
   readlinkat()
   rmdir()

@@ -107,6 +107,11 @@ class qunix_unistd: public QObject
     AtSymlinkNoFollow = AT_SYMLINK_NOFOLLOW
   };
 
+  enum class UNLINKAT_FLAGS : int
+  {
+    AtRemoveDir = AT_REMOVEDIR
+  };
+
   qunix_unistd(QObject *parent):QObject(parent)
   {
   }
@@ -343,6 +348,16 @@ class qunix_unistd: public QObject
       return false;
   }
 
+  static bool unlinkat(const int dirfd,
+		       const char *path,
+		       const UNLINKAT_FLAGS flags)
+  {
+    if(path)
+      return ::unlinkat(dirfd, path, static_cast<int> (flags)) != -1;
+    else
+      return false;
+  }
+
   static gid_t getegid(void)
   {
     return ::getegid();
@@ -403,6 +418,13 @@ inline qunix_unistd::FCHOWNAT_FLAGS operator |
 (qunix_unistd::FCHOWNAT_FLAGS a, qunix_unistd::FCHOWNAT_FLAGS b)
 {
   return qunix_unistd::FCHOWNAT_FLAGS
+    (static_cast<int> (a) | static_cast<int> (b));
+}
+
+inline qunix_unistd::UNLINKAT_FLAGS operator |
+(qunix_unistd::UNLINKAT_FLAGS a, qunix_unistd::UNLINKAT_FLAGS b)
+{
+  return qunix_unistd::UNLINKAT_FLAGS
     (static_cast<int> (a) | static_cast<int> (b));
 }
 
