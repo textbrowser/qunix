@@ -107,6 +107,12 @@ class qunix_unistd: public QObject
     AtSymlinkNoFollow = AT_SYMLINK_NOFOLLOW
   };
 
+  enum class LINKAT_FLAGS : int
+  {
+    AtEmptyPath = AT_EMPTY_PATH,
+    AtSymlinkFollow = AT_SYMLINK_FOLLOW
+  };
+
   enum class UNLINKAT_FLAGS : int
   {
     AtRemoveDir = AT_REMOVEDIR
@@ -284,6 +290,19 @@ class qunix_unistd: public QObject
       return false;
   }
 
+  static bool linkat(const int olddirfd,
+		     const char *oldpath,
+		     const int newdirfd,
+		     const char *newpath,
+		     const LINKAT_FLAGS flags)
+  {
+    if(newpath && oldpath)
+      return ::linkat
+	(olddirfd, oldpath, newdirfd, newpath, static_cast<int> (flags)) != -1;
+    else
+      return false;
+  }
+
   static bool pause(void)
   {
     return ::pause() != -1;
@@ -418,6 +437,13 @@ inline qunix_unistd::FCHOWNAT_FLAGS operator |
 (qunix_unistd::FCHOWNAT_FLAGS a, qunix_unistd::FCHOWNAT_FLAGS b)
 {
   return qunix_unistd::FCHOWNAT_FLAGS
+    (static_cast<int> (a) | static_cast<int> (b));
+}
+
+inline qunix_unistd::LINKAT_FLAGS operator |
+(qunix_unistd::LINKAT_FLAGS a, qunix_unistd::LINKAT_FLAGS b)
+{
+  return qunix_unistd::LINKAT_FLAGS
     (static_cast<int> (a) | static_cast<int> (b));
 }
 

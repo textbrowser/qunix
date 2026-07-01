@@ -32,12 +32,14 @@ Completed Items
   isatty()
   lchown()
   link()
+  linkat()
   lseek() // See QIODevice.
   pathconf()
   pause()
   pread() // See QIODevice.
   pwrite() // See QIODevice.
   read() // See QIODevice.
+  rmdir() // See QDir.
   setegid()
   seteuid()
   setgid()
@@ -55,13 +57,11 @@ Remaining Items
 
 - The file unistd.h.
   faccessat2()
-  linkat(
   lockf()
   pipe()
   pipe2()
   readlink()
   readlinkat()
-  rmdir()
   symlink()
   symlinkat()
   sync()
