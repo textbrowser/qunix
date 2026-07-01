@@ -48,6 +48,7 @@ Completed Items
   sysconf()
   truncate() // See QFile::resize().
   unlink()
+  unlinkat()
   write() // See QIODevice.
 
 Remaining Items
@@ -67,4 +68,3 @@ Remaining Items
   syncfs()
   ttyname()
   ttyname_r()
-  unlinkat()
