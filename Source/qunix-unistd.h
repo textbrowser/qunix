@@ -278,7 +278,7 @@ class qunix_unistd: public QObject
 
   static bool link(const char *oldpath, const char *newpath)
   {
-    if(newpath || oldpath)
+    if(newpath && oldpath)
       return ::link(oldpath, newpath) != -1;
     else
       return false;
