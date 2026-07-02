@@ -34,6 +34,7 @@
 
 extern "C"
 {
+#include <errno.h>
 #include <fcntl.h>
 #include <grp.h>
 #include <unistd.h>
@@ -303,6 +304,11 @@ class qunix_unistd: public QObject
       return false;
   }
 
+  static bool lockf(const int fd, const int op, const off_t size)
+  {
+    return ::lockf(fd, op, size) != -1;
+  }
+
   static bool pause(void)
   {
     return ::pause() != -1;
@@ -385,6 +391,11 @@ class qunix_unistd: public QObject
   static gid_t getgid(void)
   {
     return ::getgid();
+  }
+
+  static int error_number(void)
+  {
+    return errno;
   }
 
   static long fpathconf(const int fd, const int name)

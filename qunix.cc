@@ -33,5 +33,7 @@ int main(void)
 
   qDebug() << "swab:" << qunix_unistd::swab(a, b, 5);
   qDebug() << b;
+  qDebug() << qunix_unistd::chdir("/hello");
+  qDebug() << qunix_unistd::error_number();
   return EXIT_SUCCESS;
 }
