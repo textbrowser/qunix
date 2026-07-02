@@ -16,10 +16,12 @@ int main(void)
   qDebug() << qunix_unistd::getgroups_names();
   qDebug() << qunix_unistd::gethostname();
   qDebug() << qunix_unistd::getlogin_r();
+#ifdef Q_OS_LINUX
   qDebug() << static_cast<int>
     (qunix_unistd::FCHOWNAT_FLAGS::AtEmptyPath |
      qunix_unistd::FCHOWNAT_FLAGS::AtSymlinkNoFollow);
   qDebug() << (AT_EMPTY_PATH | AT_SYMLINK_NOFOLLOW);
+#endif
 
   QByteArray a(10, '\0');
 

@@ -149,7 +149,12 @@ class qunix_unistd: public QObject
   static QByteArray gethostname(void)
   {
 #ifdef Q_OS_MACOS
-    QByteArray buffer(sysconf(_SC_HOST_NAME_MAX), '\0');
+    auto const length = static_cast<int> (sysconf(_SC_HOST_NAME_MAX));
+
+    if(length <= 0)
+      return QByteArray();
+
+    QByteArray buffer(length, '\0');
 #else
     QByteArray buffer(HOST_NAME_MAX, '\0');
 #endif
@@ -163,7 +168,12 @@ class qunix_unistd: public QObject
   static QByteArray getlogin_r(void)
   {
 #ifdef Q_OS_MACOS
-    QByteArray buffer(sysconf(_SC_LOGIN_NAME_MAX), '\0');
+    auto const length = static_cast<int> (sysconf(_SC_LOGIN_NAME_MAX));
+
+    if(length <= 0)
+      return QByteArray();
+
+    QByteArray buffer(length, '\0');
 #else
     QByteArray buffer(LOGIN_NAME_MAX, '\0');
 #endif
