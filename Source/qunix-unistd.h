@@ -148,7 +148,11 @@ class qunix_unistd: public QObject
 
   static QByteArray gethostname(void)
   {
+#ifdef Q_OS_MACOS
+    QByteArray buffer(sysconf(_SC_HOST_NAME_MAX), '\0');
+#else
     QByteArray buffer(HOST_NAME_MAX, '\0');
+#endif
 
     if(::gethostname(buffer.data(), buffer.length()) != 0)
       buffer.clear();
