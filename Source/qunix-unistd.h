@@ -97,9 +97,15 @@ class qunix_unistd: public QObject
  public:
   enum class FACCESSAT_FLAGS : int
   {
+#ifdef Q_OS_MACOS
+    AtEaccess = AT_EACCESS,
+    AtSymlinkNoFollow = AT_SYMLINK_NOFOLLOW,
+    AtSymlinkNoFollowAny = AT_SYMLINK_NOFOLLOW_ANY
+#else
     AtEaccess = AT_EACCESS,
     AtEmptyPath = AT_EMPTY_PATH,
     AtSymlinkNoFollow = AT_SYMLINK_NOFOLLOW
+#endif
   };
 
   enum class FCHOWNAT_FLAGS : int
