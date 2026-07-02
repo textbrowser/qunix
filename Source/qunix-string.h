@@ -53,6 +53,14 @@ class qunix_string: public QObject
   {
     QByteArray buffer(1024, '\0');
 
+#ifdef Q_OS_MACOS
+    auto const temporary = ::strerror_r(errnum, buffer.data(), buffer.length());
+
+    if(temporary)
+      buffer = temporary;
+    else
+      buffer.clear();
+#else
 #if !_GNU_SOURCE && (_POSIX_C_SOURCE >= 200112L)
     if(::strerror_r(errnum, buffer.data(), buffer.length()) != 0)
       buffer.clear();
@@ -63,6 +71,7 @@ class qunix_string: public QObject
       buffer = temporary;
     else
       buffer.clear();
+#endif
 #endif
 
     return buffer.constData();
