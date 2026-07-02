@@ -162,7 +162,11 @@ class qunix_unistd: public QObject
 
   static QByteArray getlogin_r(void)
   {
+#ifdef Q_OS_MACOS
+    QByteArray buffer(sysconf(_SC_LOGIN_NAME_MAX), '\0');
+#else
     QByteArray buffer(LOGIN_NAME_MAX, '\0');
+#endif
 
     if(::getlogin_r(buffer.data(), buffer.length()) != 0)
       buffer.clear();
