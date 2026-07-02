@@ -96,8 +96,7 @@ QMAKE_CXXFLAGS_RELEASE += -std=c++17
 QMAKE_CXXFLAGS_RELEASE -= -std=c++11
 }
 
-QMAKE_DISTCLEAN += -f .qmake* \
-                   -fr Temporary
+QMAKE_DISTCLEAN += -fr .qmake* Temporary
 
 QMAKE_STRIP = echo
 
