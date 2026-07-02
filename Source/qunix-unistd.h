@@ -110,14 +110,23 @@ class qunix_unistd: public QObject
 
   enum class FCHOWNAT_FLAGS : int
   {
+#ifdef Q_OS_MACOS
+    AtSymlinkNoFollow = AT_SYMLINK_NOFOLLOW,
+    AtSymlinkNoFollowAny = AT_SYMLINK_NOFOLLOW_ANY
+#else
     AtEmptyPath = AT_EMPTY_PATH,
     AtSymlinkNoFollow = AT_SYMLINK_NOFOLLOW
+#endif
   };
 
   enum class LINKAT_FLAGS : int
   {
+#ifdef Q_OS_MACOS
+    AtSymlinkFollow = AT_SYMLINK_FOLLOW
+#else
     AtEmptyPath = AT_EMPTY_PATH,
     AtSymlinkFollow = AT_SYMLINK_FOLLOW
+#endif
   };
 
   enum class UNLINKAT_FLAGS : int
