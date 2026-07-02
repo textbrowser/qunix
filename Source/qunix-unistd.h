@@ -278,10 +278,12 @@ class qunix_unistd: public QObject
       return false;
   }
 
+#ifdef Q_OS_LINUX
   static bool fdatasync(const int fd)
   {
     return ::fdatasync(fd) != -1;
   }
+#endif
 
   static bool fsync(const int fd)
   {
@@ -354,7 +356,12 @@ class qunix_unistd: public QObject
 
   static bool sethostid(const long hostid)
   {
+#ifdef Q_OS_MACOS
+    ::sethostid(hostid);
+    return true;
+#else
     return ::sethostid(hostid) != -1;
+#endif
   }
 
   static bool sethostname(const QByteArray &name)
