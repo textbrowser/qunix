@@ -49,6 +49,8 @@ Completed Items
   setreuid()
   setuid()
   swab()
+  sync()
+  syncfs()
   sysconf()
   truncate() // See QFile::resize().
   unlink()
@@ -65,7 +67,5 @@ Remaining Items
   readlinkat()
   symlink()
   symlinkat()
-  sync()
-  syncfs()
   ttyname()
   ttyname_r()

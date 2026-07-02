@@ -365,6 +365,11 @@ class qunix_unistd: public QObject
     return true;
   }
 
+  static bool syncfs(const int fd)
+  {
+    return ::syncfs(fd) != -1;
+  }
+
   static bool unlink(const char *path)
   {
     if(path)
@@ -434,6 +439,11 @@ class qunix_unistd: public QObject
   static unsigned int alarm(const unsigned int seconds)
   {
     return ::alarm(seconds);
+  }
+
+  static void sync(void)
+  {
+    ::sync();
   }
 };
 
