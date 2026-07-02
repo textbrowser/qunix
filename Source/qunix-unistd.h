@@ -395,10 +395,12 @@ class qunix_unistd: public QObject
     return true;
   }
 
+#ifdef Q_OS_LINUX
   static bool syncfs(const int fd)
   {
     return ::syncfs(fd) != -1;
   }
+#endif
 
   static bool unlink(const char *path)
   {
