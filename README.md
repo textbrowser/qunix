@@ -5,26 +5,38 @@
 <li>POSIX.</li>
 </ul>
 
+<b>Version 2026.11.13</b>
+<ul>
+<li>MacOS corrections.</li>
+<li>New functions: link(),
+		   linkat(),
+		   lockf(),
+		   sync(),
+		   syncfs(),
+		   unlink().
+		   unlinkat().</li>
+</ul>
+
 <b>Version 2026.03.15</b>
 <ul>
 <li>New functions: faccessat(),
-	fpathconf(),
-	ftruncate(),
-	isatty(),
-	pathconf().</li>
+		   fpathconf(),
+		   ftruncate(),
+		   isatty(),
+		   pathconf().</li>
 <li>The function pause() now returns a boolean.</li>
 </ul>
 
 <b>Version 2025.11.03</b>
 <ul>
 <li>New functions: chdir(),
-	chown(),
-	fchdir(),
-	fchown(),
-	fchownat(),
-	fdatasync(),
-	fsync(),
-	lchown().</li>
+		   chown(),
+		   fchdir(),
+		   fchown(),
+		   fchownat(),
+		   fdatasync(),
+		   fsync(),
+		   lchown().</li>
 <li>Return a boolean for close().</li>
 </ul>
 
