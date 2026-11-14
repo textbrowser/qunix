@@ -13,7 +13,7 @@
 		   lockf(),
 		   sync(),
 		   syncfs(),
-		   unlink().
+		   unlink(),
 		   unlinkat().</li>
 </ul>
 
