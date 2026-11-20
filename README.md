@@ -5,6 +5,14 @@
 <li>POSIX.</li>
 </ul>
 
+<b>Version 2026.11.20</b>
+<ul>
+<li>Close file descriptors on errors.</li>
+<li>Increase array sizes to gethostname(), getlogin_r().</li>
+<li>Inspect result in getgrgid_r().</li>
+<li>Set null-terminator for buffers in gethostname(), getlogin_r().</li>
+</ul>
+
 <b>Version 2026.11.13</b>
 <ul>
 <li>MacOS corrections.</li>
