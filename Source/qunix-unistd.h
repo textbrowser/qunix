@@ -69,6 +69,7 @@ class qunix_file: public QFile
     if(file->open(newfd, QIODevice::ReadWrite, QFileDevice::AutoCloseHandle))
       return file;
 
+    ::close(newfd);
     file.clear();
     return nullptr;
   }
@@ -85,6 +86,7 @@ class qunix_file: public QFile
     if(file->open(fd, QIODevice::ReadWrite, QFileDevice::AutoCloseHandle))
       return file;
 
+    ::close(fd);
     file.clear();
     return nullptr;
   }
