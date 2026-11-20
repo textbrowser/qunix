@@ -156,13 +156,15 @@ class qunix_unistd: public QObject
     if(length <= 0)
       return QByteArray();
 
-    QByteArray buffer(length, '\0');
+    QByteArray buffer(length + 1, '\0');
 #else
-    QByteArray buffer(HOST_NAME_MAX, '\0');
+    QByteArray buffer(HOST_NAME_MAX + 1, '\0');
 #endif
 
     if(::gethostname(buffer.data(), buffer.length()) != 0)
       buffer.clear();
+    else
+      buffer[buffer.size() - 1] = '\0';
 
     return buffer.constData();
   }
@@ -175,13 +177,15 @@ class qunix_unistd: public QObject
     if(length <= 0)
       return QByteArray();
 
-    QByteArray buffer(length, '\0');
+    QByteArray buffer(length + 1, '\0');
 #else
-    QByteArray buffer(LOGIN_NAME_MAX, '\0');
+    QByteArray buffer(LOGIN_NAME_MAX + 1, '\0');
 #endif
 
     if(::getlogin_r(buffer.data(), buffer.length()) != 0)
       buffer.clear();
+    else
+      buffer[buffer.size() - 1] = '\0';
 
     return buffer.constData();
   }
@@ -205,7 +209,8 @@ class qunix_unistd: public QObject
 			&group,
 			buffer.data(),
 			buffer.length(),
-			&result) == 0)
+			&result) == 0 &&
+	   result)
 	  vector << group.gr_name;
       }
 
